@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.valentin.capteurmajeure.Building"
+    android:background="@color/grey"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:id="@+id/contextLayout42"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dip"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <TableLayout
+            android:id="@+id/tableLayout42"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <Button
+                android:id="@+id/button42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="room"
+                android:text="@string/button_room" />
+
+            <EditText
+                android:id="@+id/editText44"
+                android:layout_width="0dp"
+                android:layout_weight=".70"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/premiereroom"/>
+
+            <Button
+                android:id="@+id/button44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/affiche_les_buildings" />
+
+            <TextView
+                android:id="@+id/textViewBuildingName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="24sp" />
+
+
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/imageViewVibrator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/descriptionlogo"
+            android:src="@drawable/vibreur"
+            android:visibility="visible"
+            android:onClick="Vibrate"
+            android:layout_below="@+id/tableLayout42"
+            android:layout_alignEnd="@+id/buttonVibrator" />
+
+        <Button
+            android:id="@+id/buttonHue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SwitchHue"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/buttonVibrator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Vibreur"
+            android:onClick="switchVibrator"
+            android:layout_above="@+id/buttonHue"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

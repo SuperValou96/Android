@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CapteurMajeure</string>
+    <string name="enter_room">Enter a number of Room #</string>
+    <string name="ok">Check</string>
+    <string name="light">Light Level :</string>
+    <string name="noise">Noise level :</string>
+    <string name="lightonoff">light on/off</string>
+    <string name="ringonoff">ring on/off</string>
+    <string name="image_content_description"> jolie petite lumière :)</string>
+    <string name="image_content_description2"> joli petit HP :)</string>
+    <string name="premiereroom">1</string>
+    <string name="button_building">Voir Buildings</string>
+    <string name="button_room">Voir Rooms</string>
+    <string name="ActivityName1">Rooms</string>
+    <string name="ActivityName2">Buildings</string>
+    <string name="affiche_les_buildings">Affiche les buildings</string>
+    <string name="Vibreur">Change phone Mode</string>
+    <string name="descriptionlogo">un logo</string>
+    <string name="SwitchHue">Switch Hue</string>
+</resources>

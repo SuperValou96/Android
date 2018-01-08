@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grey"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.example.valentin.capteurmajeure.ContextManagementActivity">
+
+
+
+    <TableLayout
+        android:id="@+id/tableLayout43"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="building"
+            android:text="@string/button_building" />
+    </TableLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/contextLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dip"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/enter_room"
+                android:textAlignment="center" />
+
+            <TableRow
+                android:id="@+id/tableButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="0dp"
+                    android:layout_weight=".70"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="@string/premiereroom"/>
+
+                <Button
+                    android:id="@+id/buttonCheck"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="0dp"
+                    android:layout_weight=".30"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ok" />
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/tableRowLight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:id="@+id/textViewLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/light"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp" />
+
+
+                <TextView
+                    android:id="@+id/textViewLightValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textColor="@color/red"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRowNoise"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:id="@+id/textViewNoise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/noise"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textViewNoiseValue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textColor="@color/red"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <RelativeLayout
+                android:id="@+id/Icons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageViewLightOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/image_content_description"
+                    android:src="@drawable/ic_bulb_on"
+                    android:visibility="invisible"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="30dp" />
+
+                <ImageView
+                    android:id="@+id/imageViewLightOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/image_content_description"
+                    android:src="@drawable/ic_bulb_off"
+                    android:visibility="invisible"
+                    android:layout_marginStart="30dp"
+                    android:layout_alignParentTop="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewRingerOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="150dp"
+                    android:contentDescription="@string/image_content_description2"
+                    android:src="@drawable/ringer_on"
+                    android:visibility="invisible"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewRingerOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="150dp"
+                    android:contentDescription="@string/image_content_description2"
+                    android:src="@drawable/ringer_off"
+                    android:visibility="invisible"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/buttonLight"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginEnd="20dp"
+                android:onClick="switchLight"
+                android:text="@string/lightonoff" />
+
+            <Button
+                android:id="@+id/buttonRinger"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:onClick="switchRinger"
+                android:text="@string/ringonoff" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
