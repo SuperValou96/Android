@@ -172,7 +172,7 @@ public class RoomContextHttpManager {
 
                         Toast toast = Toast.makeText(contextManagementActivity.getApplicationContext(), "Unknown error\nHeroku?\nInternet?", duration);
                         toast.show();
-                        // Some error to access URL : Room may not exists...
+                        // Some error to access URL
                     }
                 });
         queue.add(contextRequest);
@@ -180,7 +180,7 @@ public class RoomContextHttpManager {
 
     public static void slideNoise(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setRinger/" + progress ;
+        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setNoise/" + progress ;
 
         // POST request, actualisation of context and getting of the response
         // You are supposed to use check button before anything else.
@@ -201,7 +201,7 @@ public class RoomContextHttpManager {
 
                         Toast toast = Toast.makeText(contextManagementActivity.getApplicationContext(), "Unknown error\nHeroku?\nInternet?", duration);
                         toast.show();
-                        // Some error to access URL : Room may not exists...
+                        // Some error to access URL
                     }
                 });
         queue.add(contextRequest);

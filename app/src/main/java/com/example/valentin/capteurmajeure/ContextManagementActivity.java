@@ -11,12 +11,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.example.valentin.capteurmajeure.R.id.editText1;
-import static com.example.valentin.capteurmajeure.R.id.textViewLightValue;
-import static com.example.valentin.capteurmajeure.R.id.textViewNoiseValue;
+import static com.example.valentin.capteurmajeure.R.id.*;
 
 public class ContextManagementActivity extends AppCompatActivity {
 
@@ -30,7 +29,7 @@ public class ContextManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((Button) findViewById(R.id.buttonCheck)).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(buttonCheck)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 room = ((EditText) findViewById(editText1))
                         .getText().toString();
@@ -39,7 +38,7 @@ public class ContextManagementActivity extends AppCompatActivity {
         });
 
         // For following copy paste, I deleted redundant castings
-        findViewById(R.id.buttonLight).setOnClickListener(new View.OnClickListener() {
+        findViewById(buttonLight).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 room = ((EditText) findViewById(editText1))
                         .getText().toString();
@@ -49,7 +48,7 @@ public class ContextManagementActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.buttonRinger).setOnClickListener(new View.OnClickListener() {
+        findViewById(buttonRinger).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 room = ((EditText) findViewById(editText1))
                         .getText().toString();
@@ -59,14 +58,13 @@ public class ContextManagementActivity extends AppCompatActivity {
             }
         });
 
-        SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
-        SeekBar sk2=(SeekBar) findViewById(R.id.seekBar2);
+        SeekBar sk=(SeekBar) findViewById(seekBar);
+        SeekBar sk2=(SeekBar) findViewById(seekBar2);
 
         sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onStopTrackingTouch(SeekBar sk) {
-                // TODO Auto-generated method stub
                 room = ((EditText) findViewById(editText1))
                         .getText().toString();
                 slideLight(roomContextState, room, sk.getProgress());
@@ -88,7 +86,6 @@ public class ContextManagementActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar sk) {
-                // TODO Auto-generated method stub
                 room = ((EditText) findViewById(editText1))
                         .getText().toString();
                 slideNoise(roomContextState, room, sk.getProgress());
@@ -110,14 +107,18 @@ public class ContextManagementActivity extends AppCompatActivity {
             @Override
             public void apply(RoomContextState roomContextState) {
                 super.apply(roomContextState);
-                if (condition(roomContextState)) action();
-                    //doesn't work : display(this + " applies: silent mode switched on!");
+
+                if (condition(roomContextState)) {
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(getApplicationContext(), "SILENT MODE Turned ON !", duration);
+                    toast.show();
+                }
             }
 
             @Override
             protected boolean condition(RoomContextState roomContextState) {
                 return roomContextState.getLight() > 90
-                        && roomContextState.getNoise() > 1.0;
+                        && roomContextState.getNoise() > 1;
             }
 
             @Override
@@ -131,24 +132,56 @@ public class ContextManagementActivity extends AppCompatActivity {
                 return "Rule 1";
             }
         });
+
+        rules.add(new RoomContextRule() {
+            @Override
+            public void apply(RoomContextState roomContextState) {
+                super.apply(roomContextState);
+            }
+
+            @Override
+            protected boolean condition(RoomContextState roomContextState) {
+                return roomContextState.getLight() < 50
+                        && roomContextState.getNoise() > 1.0;
+            }
+
+            @Override
+            protected void action() {
+                ((AudioManager) getApplicationContext().getSystemService(
+                        Context.AUDIO_SERVICE))
+                        .setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            }
+
+            public String toString() {
+                return "Rule 2";
+            }
+        });
+
+        findViewById(seekBar).setEnabled(false);
+        findViewById(seekBar2).setEnabled(false);
+        findViewById(buttonLight).setEnabled(false);
+        findViewById(buttonRinger).setEnabled(false);
     }
 
     public void onUpdate(RoomContextState context) {
         roomContextState = context ;
 
-        // apply the first rule
+        // apply the rules
         rules.get(0).apply(context);
+        rules.get(1).apply(context);
 
-        SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
-        SeekBar sk2=(SeekBar) findViewById(R.id.seekBar2);
+        SeekBar sk=(SeekBar) findViewById(seekBar);
+        SeekBar sk2=(SeekBar) findViewById(seekBar2);
 
         sk.setProgress(context.getLight());
         sk2.setProgress(context.getNoise());
 
 
         // maintenant que tu as récupéré ta room, tu vas pouvoir les utiliser tes boutons
-        findViewById(R.id.buttonLight).setEnabled(true);
-        findViewById(R.id.buttonRinger).setEnabled(true);
+        findViewById(seekBar).setEnabled(true);
+        findViewById(seekBar2).setEnabled(true);
+        findViewById(buttonLight).setEnabled(true);
+        findViewById(buttonRinger).setEnabled(true);
 
         // On affiche l'icône qui va bien pour la lumière
         if (context.getLightStatus().equals("ON")) {
