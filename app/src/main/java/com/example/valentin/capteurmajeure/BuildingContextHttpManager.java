@@ -1,22 +1,16 @@
 package com.example.valentin.capteurmajeure;
 
-import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Valentin on 06/01/2018.
@@ -25,6 +19,7 @@ import java.util.Map;
 public class BuildingContextHttpManager {
 
     private static RequestQueue queue = null ;
+    private static int count = 0 ;
     public String building ;
 
     public static void retrieveBuildingContextState(String building, final Building buildingManagementActivity){
@@ -46,8 +41,9 @@ public class BuildingContextHttpManager {
                         try {
                             String nom = response.getString("nom");
                             //List<RoomContextState> rooms = response.getJSONObject("rooms");
+                            count = response.getJSONArray("rooms").length();
 
-                            BuildingContextState buildingContextState = new BuildingContextState(nom);
+                            BuildingContextState buildingContextState = new BuildingContextState(nom, count);
 
                             buildingManagementActivity.onUpdate(buildingContextState);
 
@@ -71,6 +67,7 @@ public class BuildingContextHttpManager {
         queue.add(contextRequest);
     };
 
+    // still not working
     public static void switchHue(final Building contextActivity, final BuildingContextState state, String room) {
 
         String url = "'http://192.168.220.52/api/FZT80cdHuI7jWvfubWNkGX9u18IC0QG-qjOXsI73/lights/1/state";

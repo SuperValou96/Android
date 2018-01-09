@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Build;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -36,21 +37,21 @@ public class Building extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.buttonHue).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.buttonHue).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 building = ((EditText) findViewById(editText44))
                         .getText().toString();
                 switchHue(buildingContextState, building);
             }
-        });
+        });*/
 
     }
 
     public void onUpdate(BuildingContextState context) {
         buildingContextState = context ;
 
-        // On affiche les noms
-        ((TextView) findViewById(R.id.textViewBuildingName)).setText(context.getNom());
+        // On affiche les noms et le nombre de rooms
+        ((TextView) findViewById(R.id.textViewBuildingName)).setText(context.getNom()+ ", "+context.getNbrooms()+" rooms");
     }
 
     protected void retrieveBuildingContextState(String building){
@@ -98,7 +99,8 @@ public class Building extends AppCompatActivity {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         // Vibrate for 500 milliseconds
         v.vibrate(500);
+        // make a sound for 500 ms
+        ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+        toneG.startTone(ToneGenerator.TONE_CDMA_EMERGENCY_RINGBACK, 500);
     }
-
-    // Other things are to come...
 }
