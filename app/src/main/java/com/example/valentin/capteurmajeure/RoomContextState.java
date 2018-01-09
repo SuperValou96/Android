@@ -44,4 +44,8 @@ public class RoomContextState {
     public void setLight(String lightstatus){ this.lightstatus = lightstatus;}
 
     public void setNoise(String noisestatus) { this.noisestatus = noisestatus;}
+
+    public void setLight(int light) {this.light = light;}
+
+    public void setNoise(int noise) {this.noise = noise;}
 }

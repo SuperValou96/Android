@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import static com.example.valentin.capteurmajeure.R.id.editText1;
+import static com.example.valentin.capteurmajeure.R.id.textViewLightValue;
+import static com.example.valentin.capteurmajeure.R.id.textViewNoiseValue;
 
 public class ContextManagementActivity extends AppCompatActivity {
 
@@ -56,6 +59,53 @@ public class ContextManagementActivity extends AppCompatActivity {
             }
         });
 
+        SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
+        SeekBar sk2=(SeekBar) findViewById(R.id.seekBar2);
+
+        sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar sk) {
+                // TODO Auto-generated method stub
+                room = ((EditText) findViewById(editText1))
+                        .getText().toString();
+                slideLight(roomContextState, room, sk.getProgress());
+                retrieveRoomContextState(room);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar sk, int progress,boolean fromUser) {
+                ((TextView) findViewById(textViewLightValue)).setText(" "+progress);
+            }
+        });
+
+        sk2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar sk) {
+                // TODO Auto-generated method stub
+                room = ((EditText) findViewById(editText1))
+                        .getText().toString();
+                slideNoise(roomContextState, room, sk.getProgress());
+                retrieveRoomContextState(room);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar sk2, int progress,boolean fromUser) {
+                ((TextView) findViewById(textViewNoiseValue)).setText(" "+progress);
+            }
+        });
+
         rules.add(new RoomContextRule() {
             @Override
             public void apply(RoomContextState roomContextState) {
@@ -66,7 +116,7 @@ public class ContextManagementActivity extends AppCompatActivity {
 
             @Override
             protected boolean condition(RoomContextState roomContextState) {
-                return roomContextState.getLight() > 100
+                return roomContextState.getLight() > 90
                         && roomContextState.getNoise() > 1.0;
             }
 
@@ -88,6 +138,13 @@ public class ContextManagementActivity extends AppCompatActivity {
 
         // apply the first rule
         rules.get(0).apply(context);
+
+        SeekBar sk=(SeekBar) findViewById(R.id.seekBar);
+        SeekBar sk2=(SeekBar) findViewById(R.id.seekBar2);
+
+        sk.setProgress(context.getLight());
+        sk2.setProgress(context.getNoise());
+
 
         // maintenant que tu as récupéré ta room, tu vas pouvoir les utiliser tes boutons
         findViewById(R.id.buttonLight).setEnabled(true);
@@ -115,8 +172,8 @@ public class ContextManagementActivity extends AppCompatActivity {
 
         // On affiche les valeurs numériques, on caste bizarrement psk ça permet d'avoir une espace après les deux points
         // le textView est ici obligé pour utiliser setText apparemment
-        ((TextView) findViewById(R.id.textViewLightValue)).setText(" " + context.getLight());
-        ((TextView) findViewById(R.id.textViewNoiseValue)).setText(" " + context.getNoise());
+        ((TextView) findViewById(textViewLightValue)).setText(" " + context.getLight());
+        ((TextView) findViewById(textViewNoiseValue)).setText(" " + context.getNoise());
 
     }
 
@@ -133,6 +190,15 @@ public class ContextManagementActivity extends AppCompatActivity {
     protected void switchRinger(RoomContextState state, String room){
         RoomContextHttpManager.switchRinger(this, state, room);
     }
+
+    protected void slideLight(RoomContextState state, String room, int progress){
+        RoomContextHttpManager.slideLight(this, state, room, progress);
+    }
+
+    protected void slideNoise(RoomContextState state, String room, int progress){
+        RoomContextHttpManager.slideNoise(this, state, room, progress);
+    }
+
 
     // Function in order to change activity
     public void building(View view) {

@@ -148,4 +148,62 @@ public class RoomContextHttpManager {
                 });
         queue.add(contextRequest);
     };
+
+    public static void slideLight(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
+
+        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setLight/" + progress ;
+
+        // POST request, actualisation of context and getting of the response
+        // You are supposed to use check button before anything else.
+        StringRequest contextRequest = new StringRequest
+                (Request.Method.POST, url, new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        state.setLight(progress);
+                        contextManagementActivity.onUpdate(state);
+                    }
+
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(contextManagementActivity.getApplicationContext(), "Unknown error\nHeroku?\nInternet?", duration);
+                        toast.show();
+                        // Some error to access URL : Room may not exists...
+                    }
+                });
+        queue.add(contextRequest);
+    };
+
+    public static void slideNoise(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
+
+        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setRinger/" + progress ;
+
+        // POST request, actualisation of context and getting of the response
+        // You are supposed to use check button before anything else.
+        StringRequest contextRequest = new StringRequest
+                (Request.Method.POST, url, new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        state.setNoise(progress);
+                        contextManagementActivity.onUpdate(state);
+                    }
+
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(contextManagementActivity.getApplicationContext(), "Unknown error\nHeroku?\nInternet?", duration);
+                        toast.show();
+                        // Some error to access URL : Room may not exists...
+                    }
+                });
+        queue.add(contextRequest);
+    };
 }
