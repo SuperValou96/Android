@@ -25,7 +25,7 @@ public class RoomContextHttpManager {
 
     public static void retrieveRoomContextState(String room, final ContextManagementActivity contextManagementActivity){
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/content/";
+        String url = "https://web-project10.herokuapp.com/api/rooms/" + room ;
 
         // on crée une queue si elle n'exite pas déjà pour pouvoir communiquer et on récupère le contexte de l'activity
         if(queue == null){
@@ -73,7 +73,7 @@ public class RoomContextHttpManager {
 
     public static void switchLight(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room) {
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/switchLightl/";
+        String url = "https://web-project10.herokuapp.com/api/rooms/" + room + "/switch_light/";
 
         /* No need to create the queue because the switch button is disabled if retrieveRoomContextState hasn't already been called
         if(queue == null){
@@ -115,7 +115,7 @@ public class RoomContextHttpManager {
 
     public static void switchRinger(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room) {
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/switchRingerl/";
+        String url = "https://web-project10.herokuapp.com/api/rooms/" + room + "/switch_ringer";
 
         // POST request, actualisation of context and getting of the response
         // You are supposed to use check button before switch button, otherwise, display could be wrong.
@@ -149,7 +149,7 @@ public class RoomContextHttpManager {
 
     public static void slideLight(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setLight/" + progress ;
+        String url = "https://web-project10.herokuapp.com/api/rooms/" + room + "/setLight/" + progress ;
 
         // POST request, actualisation of context and getting of the response
         // You are supposed to use check button before anything else.
@@ -178,7 +178,7 @@ public class RoomContextHttpManager {
 
     public static void slideNoise(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/rooms/" + room + "/setNoise/" + progress ;
+        String url = "https://web-project10.herokuapp.com/api/rooms/" + room + "/setNoise/" + progress ;
 
         // POST request, actualisation of context and getting of the response
         // You are supposed to use check button before anything else.

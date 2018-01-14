@@ -23,7 +23,7 @@ public class BuildingContextHttpManager {
 
     public static void retrieveBuildingContextState(String building, final Building buildingManagementActivity){
 
-        String url = "https://mighty-plains-77473.herokuapp.com/api/buildings/" + building + "/content/";
+        String url = "https://web-project10.herokuapp.com/api/buildings/" + building ;
 
         // on crée une queue si elle n'exite pas déjà pour pouvoir communiquer et on récupère le contexte de l'activity
         if(queue == null){
@@ -38,9 +38,9 @@ public class BuildingContextHttpManager {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String nom = response.getString("nom");
+                            String nom = response.getString("name");
                             //List<RoomContextState> rooms = response.getJSONObject("rooms");
-                            count = response.getJSONArray("rooms").length();
+                            count = response.getJSONArray("room").length();
 
                             BuildingContextState buildingContextState = new BuildingContextState(nom, count);
 
