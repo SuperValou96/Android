@@ -22,8 +22,6 @@ import org.json.JSONObject;
 public class RoomContextHttpManager {
 
     private static  RequestQueue queue = null ;
-    public String room ;
-
 
     public static void retrieveRoomContextState(String room, final ContextManagementActivity contextManagementActivity){
 
@@ -71,7 +69,7 @@ public class RoomContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 
     public static void switchLight(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room) {
 
@@ -112,7 +110,7 @@ public class RoomContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 
 
     public static void switchRinger(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room) {
@@ -147,7 +145,7 @@ public class RoomContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 
     public static void slideLight(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
 
@@ -176,7 +174,7 @@ public class RoomContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 
     public static void slideNoise(final ContextManagementActivity contextManagementActivity, final RoomContextState state, String room, final int progress) {
 
@@ -205,5 +203,5 @@ public class RoomContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 }

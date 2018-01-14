@@ -20,7 +20,6 @@ public class BuildingContextHttpManager {
 
     private static RequestQueue queue = null ;
     private static int count = 0 ;
-    public String building ;
 
     public static void retrieveBuildingContextState(String building, final Building buildingManagementActivity){
 
@@ -65,7 +64,7 @@ public class BuildingContextHttpManager {
                     }
                 });
         queue.add(contextRequest);
-    };
+    }
 
     // still not working
     public static void switchHue(final Building contextActivity, final BuildingContextState state, String room) {
@@ -124,5 +123,5 @@ public class BuildingContextHttpManager {
         };
 
         queue.add(request);
-    };
+    }
 }

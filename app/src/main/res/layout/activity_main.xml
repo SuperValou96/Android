@@ -2,46 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/grey"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context="com.example.valentin.capteurmajeure.ContextManagementActivity">
 
-
-
-    <TableLayout
-        android:id="@+id/tableLayout43"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dip" >
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="building"
-            android:text="@string/button_building" />
-    </TableLayout>
-
+    <ScrollView
+        android:id="@+id/ScrollView02"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
     <RelativeLayout
         android:id="@+id/contextLayout"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="visible"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:padding="5dp"
+        android:visibility="visible">
 
         <TableLayout
             android:id="@+id/tableLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="25dip"
+            android:padding="5dip"
             android:layout_centerVertical="true">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="building"
+                android:text="@string/button_building" />
+
 
             <TextView
                 android:id="@+id/textView1"
@@ -53,7 +46,7 @@
 
             <TableRow
                 android:id="@+id/tableButton"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dip">
 
@@ -85,7 +78,8 @@
                     android:id="@+id/textViewLight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="end"
                     android:text="@string/light"
                     android:textAlignment="gravity"
                     android:textSize="24sp" />
@@ -95,7 +89,7 @@
                     android:id="@+id/textViewLightValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:textColor="@color/red"
                     android:textSize="24sp" />
             </TableRow>
@@ -110,7 +104,8 @@
                     android:id="@+id/textViewNoise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="end"
                     android:text="@string/noise"
                     android:textAlignment="gravity"
                     android:textSize="24sp" />
@@ -119,7 +114,7 @@
                     android:id="@+id/textViewNoiseValue"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:textColor="@color/red"
                     android:textSize="24sp" />
             </TableRow>
@@ -190,14 +185,14 @@
                 android:max="100"
                 android:progress="1"/>
 
-        </TableLayout>
+
 
         <LinearLayout
             android:id="@+id/linearLayoutButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:weightSum="1">
 
             <Button
@@ -205,9 +200,8 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginEnd="20dp"
-                android:onClick="switchLight"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
                 android:text="@string/lightonoff" />
 
             <Button
@@ -215,10 +209,12 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:onClick="switchRinger"
+                android:layout_marginEnd="15dp"
                 android:text="@string/ringonoff" />
+
         </LinearLayout>
+        </TableLayout>
     </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
