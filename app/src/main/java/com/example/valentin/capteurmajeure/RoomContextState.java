@@ -2,6 +2,7 @@ package com.example.valentin.capteurmajeure;
 
 /**
  * Created by Valentin on 04/11/2017.
+   This class contains the room that is displayed by the activity with all its attributes.
  */
 
 public class RoomContextState {
