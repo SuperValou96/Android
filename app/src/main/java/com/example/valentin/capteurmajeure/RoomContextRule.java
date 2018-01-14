@@ -2,6 +2,7 @@ package com.example.valentin.capteurmajeure;
 
 /**
  * Created by Valentin on 07/01/2018.
+ This class allows to create rules in the activity.
  */
 
 public abstract class RoomContextRule {
